@@ -1,0 +1,158 @@
+\documentclass[a4paper,12pt,twoside,openright]{memoir}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\makeoddfoot{plain}{}{}{-\space\thepage\space-} % page number on the bottom right
+\makepagestyle{mystyle}
+\makeoddhead{mystyle}{\itshape\leftmark}{}{}
+\makeevenhead{mystyle}{}{}{\itshape\leftmark}
+\makeoddfoot{mystyle}{}{}{-\space\thepage\space-}
+\makeevenfoot{mystyle}{-\space\thepage\space-}{}{}
+
+
+\pagestyle{mystyle}
+\chapterstyle{dash}
+
+% For Chinese fonts
+% \usepackage{fontspec}
+% \setmainfont{SimSun}
+\usepackage[AutoFakeBold,SlantFont]{xeCJK}
+% \usepackage[SlantFont]{xeCJK}   %AutoFakeBold=true makes CJK characters in the generated PDF can't be copied
+
+\setCJKmainfont{SimSun}
+
+\usepackage[english]{babel}     % For enquote
+%% If babel package is used, then the following won't work
+% \renewcommand{\contentsname}{目~~~~录}
+%% One has to use the following to make it work:
+\addto\captionsenglish{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {目~~~~录}%
+} 
+
+% dots in chapter of ToC
+\renewcommand*{\cftchapterdotsep}{\cftdotsep}
+
+\usepackage{csquotes} 
+
+\usepackage{bookmark}
+
+\usepackage{colortbl}
+\usepackage{tikz}
+\usetikzlibrary{intersections}
+\usetikzlibrary{shapes}
+\usetikzlibrary{plotmarks}
+
+\usepackage{mathtools,amsthm,amsfonts,amssymb,bm}
+\setCJKfamilyfont{kai}{KaiTi}
+\newcommand{\kai}{\CJKfamily{kai}}
+
+\makeatletter
+% % Original \marginpar 
+% \long\def\@ympar#1{%
+%   \@savemarbox\@marbox{#1}%
+%   \global\setbox\@currbox\copy\@marbox
+%   \@xympar}
+
+% Change the font to small
+\long\def\@ympar#1{%
+  \@savemarbox\@marbox{\small #1}%
+  \global\setbox\@currbox\copy\@marbox
+  \@xympar}
+
+\makeatother
+
+% Add border to marginpar
+\let\oldmarginpar\marginpar
+\renewcommand{\marginpar}[1]{%
+  \oldmarginpar{%
+    \tikz \node [anchor=north west,text width=.8\marginparwidth,fill=gray!30,rectangle,draw,rounded corners]{\tiny #1};%
+  }%
+}
+
+
+
+\renewcommand{\baselinestretch}{1.1}
+\renewcommand*{\arraystretch}{1.5}
+
+\usepackage{graphicx}%\resizebox
+
+\usepackage[makeroom]{cancel} % for xcancel/cancel/bcancel etc.
+
+\usepackage{fancyvrb}           % for BVerbatim environment
+
+\usepackage{verbatim}
+\usepackage{varwidth}
+% Center verbatim environment, with the help from verbatim package
+\makeatletter
+\def\verbatim@font{\normalfont\ttfamily\kai%\Large
+  \hyphenchar\font\m@ne
+  \@noligs}
+\makeatother
+\newcommand{\vfchar}[1]{%
+  % the usual trick for using a "variable" active character
+  \begingroup\lccode`~=`#1 \lowercase{\endgroup\def~##1~}{%
+    % separate the footnote mark from the footnote text
+    % so the footnote mark will occupy the same space as
+    % any other character
+    \makebox[0.5em][l]{\footnotemark}%
+    %\footnotetext{##1}%% This goes to the bottom of the minipage
+  }%
+  \catcode`#1=\active
+}
+\newenvironment{pcontent}[1]{%
+  \par
+  \centering
+  \varwidth{\linewidth}%
+  \verbatim\vfchar{#1}
+}{%
+  \endverbatim
+  \endvarwidth
+  \par\vskip10pt
+}
+\newcommand{\ptitle}[3]{【{#1}·{#2}·{#3}】}
+\newcommand*{\psentence}[1]{\begingroup\normalfont\ttfamily\kai{#1}\endgroup}
+
+\newcommand*{\splitline}{\begingroup\vskip.5cm\centering{\S~~\S~~\S~~\S~~\S~~\S}\vskip.5cm\endgroup}
+\newcommand*{\cispace}{\hspace{1cm}}
+
+% indent the first paragraph after section header
+\usepackage{indentfirst}
+% parindent to 2 characters
+\setlength{\parindent}{2em}
+\setlength{\parskip}{3pt}
+
+
+\title{失落之城}
+\author{白羽}
+\date{}
+
+% \includeonly{preface}
+% \includeonly{明月出天山}
+
+\begin{document}
+\frontmatter
+% 4 parts of book/memoir/scrbook class:
+% \frontmatter
+% \appendix
+% \backmatter
+% \mainmatter
+
+\maketitle
+\thispagestyle{empty}           % no page numbering
+\cleardoublepage
+
+\setcounter{page}{1}
+\tableofcontents
+
+\mainmatter
+
+\include{preface}
+\include{ch001}
+% \include{明月出天山}
+\include{note}
+
+% \showthe\parskip
+
+\appendix
+\backmatter
+\end{document}
