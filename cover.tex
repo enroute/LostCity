@@ -1,0 +1,37 @@
+{
+  \thispagestyle{empty}
+  \definecolor{titlepagecolor}{cmyk}{0.436,.865,0,.478}
+  \begin{tikzpicture}[remember picture,overlay,shorten >= -10pt]
+    \coordinate (left) at (current page.west);
+    \coordinate (right)at (current page.east);
+    \coordinate (top)  at (current page.north);
+    \coordinate (bottom) at (current page.south);
+    % \coordinate (top-left) at (top -| left);
+    \coordinate (top-left) at (current page.north west);
+    \coordinate (top-right) at (right |- top);
+    \coordinate (O) at ($.5*(left) + .5*(right)$);
+    \coordinate (bottom-left) at (bottom -| left);
+    \coordinate (bottom-right) at (bottom -| right);
+    % \draw(left)--(right)--(top)--(bottom);
+    \filldraw[draw=titlepagecolor,fill=titlepagecolor] (left)--(O)--(top-right)--(top-left)--cycle;
+    \filldraw[draw=titlepagecolor!30!white,fill=titlepagecolor!30!white,opacity=0.5](top-left)--(top-right)--([xshift=-5cm]top-right)--([xshift=-5cm]O)--(left)--cycle;
+    \filldraw[draw=titlepagecolor!30!white,fill=titlepagecolor!30!white,opacity=0.3]($.6*(left)+.4*(top-left)$)--(left)--(O)--($.6*(O)+.4*(top-right)$)--cycle;
+    \filldraw[draw=titlepagecolor,fill=titlepagecolor](O)--([xshift=-5cm]O)--([xshift=-5cm]bottom-right)--(bottom-right)--cycle;
+    \filldraw[draw=titlepagecolor!30!white,fill=titlepagecolor!30!white,opacity=0.3] (O)--(right)--(bottom-right)--cycle;
+
+    \node[below right] (T) at ([xshift=3cm,yshift=-4cm]current page.north west) {\parbox{\textwidth}{\color{white}\fontsize{60}{72} \selectfont\kai 失落之城}};
+    \filldraw[very thick, draw=white,opacity=50]([xshift=1.5cm,yshift=-.5cm]T.south west)--([xshift=1cm,yshift=-.5cm]T.south east);
+    \node[below right,color=white,opacity=.2] at ([xshift=1.5cm,, yshift=-1cm]T.south west) {\scalebox{1}[-1]{\textsc{\fontsize{40}{48}\selectfont\kai Lost City}}};
+    \node[below left] at ([xshift=-3cm,yshift=-4cm]current page.east){\parbox{.3\textwidth}{\raggedleft
+      {\large 白羽}\par
+      {\small\texttt mario.li@foxmail.com}\par
+      {\small powered by}\par
+      \XeLaTeX
+      }};
+    \node[above] at ([yshift=4cm]current page.south) {\large \today\par};
+  \end{tikzpicture}
+}
+
+% Reset page counter
+\cleardoublepage
+\setcounter{page}{1}

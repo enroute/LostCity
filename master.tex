@@ -36,9 +36,11 @@
 
 \usepackage{bookmark}
 
+\usepackage{metalogo}           %for \XeTeX, \XeLaTeX, \LuaTeX and \LuaLaTeX
+
 \usepackage{colortbl}
 \usepackage{tikz}
-\usetikzlibrary{intersections}
+\usetikzlibrary{intersections,calc}
 \usetikzlibrary{shapes}
 \usetikzlibrary{plotmarks}
 
@@ -137,20 +139,22 @@
 % \backmatter
 % \mainmatter
 
-\maketitle
+\include{cover}
+% \maketitle
 \thispagestyle{empty}           % no page numbering
 \cleardoublepage
 
 \setcounter{page}{1}
-\tableofcontents
+\tableofcontents*
 
 \mainmatter
 
 \include{preface}
 \include{ch001}
 \include{ch002}
+\include{ch003}
 % \include{明月出天山}
-\include{note}
+% \include{note}
 
 % \showthe\parskip
 
