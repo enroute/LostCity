@@ -3,8 +3,9 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \makeoddfoot{plain}{}{}{-\space\thepage\space-} % page number on the bottom right
 \makepagestyle{mystyle}
-\makeoddhead{mystyle}{\itshape\leftmark}{}{}
-\makeevenhead{mystyle}{}{}{\itshape\leftmark}
+% \makeoddhead{mystyle}{\thechapter. \itshape\leftmark}{}{}
+\makeoddhead{mystyle}{\itshape\thetitle}{\rule[-.3\baselineskip]{\linewidth}{.4pt}}{}
+\makeevenhead{mystyle}{}{\rule[-.3\baselineskip]{\linewidth}{.4pt}}{\thechapter. \itshape\leftmark}
 \makeoddfoot{mystyle}{}{}{-\space\thepage\space-}
 \makeevenfoot{mystyle}{-\space\thepage\space-}{}{}
 
@@ -153,6 +154,8 @@
 \include{ch001}
 \include{ch002}
 \include{ch003}
+\include{ch004}
+\include{ch005}
 % \include{明月出天山}
 % \include{note}
 
