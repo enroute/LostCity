@@ -22,13 +22,14 @@
     \node[below right] (T) at ([xshift=3cm,yshift=-4cm]current page.north west) {\parbox{\textwidth}{\color{white}\fontsize{60}{72} \selectfont\kai 失落之城}};
     \filldraw[very thick, draw=white,opacity=50]([xshift=1.5cm,yshift=-.5cm]T.south west)--([xshift=1cm,yshift=-.5cm]T.south east);
     \node[below right,color=white,opacity=.2] at ([xshift=1.5cm,, yshift=-1cm]T.south west) {\scalebox{1}[-1]{\textsc{\fontsize{40}{48}\selectfont\kai Lost City}}};
-    \node[below left] at ([xshift=-3cm,yshift=-4cm]current page.east){\parbox{.3\textwidth}{\raggedleft
-      {\large 白羽}\par
+    \node[below left] at ([xshift=-2cm,yshift=-3cm]current page.east){\parbox{.3\textwidth}{\raggedleft
+      {\kai\large 西南往南}\par
       {\small\texttt mario.li@foxmail.com}\par
-      {\small powered by}\par
+      {\tiny powered by}\par
       \XeLaTeX
       }};
-    \node[above] at ([yshift=4cm]current page.south) {\large \today\par};
+    % \node[above] at ([yshift=4cm]current page.south) {\large \today\par};
+    \node[above] at ([yshift=4cm]current page.south) {\large \the\year--\the\month--\the\day\par};
   \end{tikzpicture}
 }
 

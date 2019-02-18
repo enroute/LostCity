@@ -1,4 +1,9 @@
-\documentclass[a4paper,12pt,twoside,openright]{memoir}
+\documentclass[b5paper,12pt,twoside,openright]{memoir}
+
+% relax footnote
+\renewcommand{\footnote}[1]{}
+\renewcommand{\footnotetext}[1]{}
+% \renewcommand{\footnotemark}[1]{}
 
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \makeoddfoot{plain}{}{}{-\space\thepage\space-} % page number on the bottom right
@@ -97,7 +102,7 @@
     % separate the footnote mark from the footnote text
     % so the footnote mark will occupy the same space as
     % any other character
-    \makebox[0.5em][l]{\footnotemark}%
+    %\makebox[0.5em][l]{\footnotemark}% uncomment this if footnote required
     %\footnotetext{##1}%% This goes to the bottom of the minipage
   }%
   \catcode`#1=\active
@@ -117,6 +122,8 @@
 
 \newcommand*{\splitline}{\begingroup\vskip.5cm\centering{\S~~\S~~\S~~\S~~\S~~\S}\vskip.5cm\endgroup}
 \newcommand*{\cispace}{\hspace{1cm}}
+% relax splitline
+\let\splitline\relax
 
 % indent the first paragraph after section header
 \usepackage{indentfirst}
@@ -145,12 +152,14 @@
 \thispagestyle{empty}           % no page numbering
 \cleardoublepage
 
+\include{preface
+\cleardoublepage}
+
 \setcounter{page}{1}
 \tableofcontents*
 
 \mainmatter
 
-\include{preface}
 \include{ch001}
 \include{ch002}
 \include{ch003}
