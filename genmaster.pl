@@ -8,7 +8,7 @@ open my $fh, "<$file" or die $!;
 my $contents=<$fh>;
 close $fh;
 
-my @files=map{s/.tex$//;$_} sort glob("ch*.tex");
+my @files=map{s/.tex$//;$_} sort glob("src/ch*.tex");
 my $files=join("\n", map{"\\include{$_}"} @files);
 $contents=~s/%<<T_FILES>>\\include\{T_FILE\}<<\/T_FILES>>\K/\n$files/x;
 print $contents;
