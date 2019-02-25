@@ -19,14 +19,14 @@
     \filldraw[draw=titlepagecolor,fill=titlepagecolor](O)--([xshift=-5cm]O)--([xshift=-5cm]bottom-right)--(bottom-right)--cycle;
     \filldraw[draw=titlepagecolor!30!white,fill=titlepagecolor!30!white,opacity=0.3] (O)--(right)--(bottom-right)--cycle;
 
-    \node[below right] (T) at ([xshift=3cm,yshift=-4cm]current page.north west) {\parbox{\textwidth}{\color{white}\fontsize{60}{72} \selectfont\kai 失落之城}};
+    \node[below right] (T) at ([xshift=3cm,yshift=-4cm]current page.north west) {\parbox{\textwidth}{\color{white}\fontsize{60}{72} \selectfont\kai \ctitle}};
     \filldraw[very thick, draw=white,opacity=50]([xshift=1.5cm,yshift=-.5cm]T.south west)--([xshift=1cm,yshift=-.5cm]T.south east);
-    \node[below right,color=white,opacity=.2] at ([xshift=1.5cm,, yshift=-1cm]T.south west) {\scalebox{1}[-1]{\textsc{\fontsize{40}{48}\selectfont\kai Lost City}}};
+    \node[below right,color=white,opacity=.5] at ([xshift=-1.5cm,, yshift=-1.2cm]T.south west) {\scalebox{1}[-1]{\textsc{\fontsize{30}{36}\selectfont\kai \etitle}}};
     \node[below left] at ([xshift=-2cm,yshift=-3cm]current page.east){\parbox{.3\textwidth}{\raggedleft
       {\kai\large 西南往南}\par
       {\small\texttt mario.li@foxmail.com}\par
       {\tiny powered by}\par
-      \XeLaTeX
+      {\small \XeLaTeX}
       }};
     % \node[above] at ([yshift=4cm]current page.south) {\large \today\par};
     \node[above] at ([yshift=4cm]current page.south) {\large \the\year--\the\month--\the\day\par};
