@@ -2,6 +2,9 @@
 
 \newcommand*{\ctitle}{望月湖}
 \newcommand*{\etitle}{Legend of Kror\"an}
+\title{\ctitle}
+\author{西南往南}
+\date{}
 
 % relax footnote
 \renewcommand{\footnote}[1]{}
@@ -17,9 +20,11 @@
 \makeoddfoot{mystyle}{}{}{-\space\thepage\space-}
 \makeevenfoot{mystyle}{-\space\thepage\space-}{}{}
 
-
 \pagestyle{mystyle}
 \chapterstyle{dash}
+
+% suppress part title page numbering
+\aliaspagestyle{part}{empty}
 
 % For Chinese fonts
 % \usepackage{fontspec}
@@ -34,9 +39,17 @@
 % \renewcommand{\contentsname}{目~~~~录}
 %% One has to use the following to make it work:
 \addto\captionsenglish{% Replace "english" with the language you use
-  \renewcommand{\contentsname}%
-    {目~~~~录}%
+  \renewcommand{\contentsname}{目~~~~录}%
+  \renewcommand{\partname}{第~\thepart~卷}%
 } 
+% Remove \thepart since it's already included in \partname redefined above
+\renewcommand{\partnamenum}{}%
+\renewcommand{\printpartnum}{}
+
+\usepackage{etoolbox}           % for \apptocmd \pretocmd \patchcmd
+\renewcommand*\partnumberlinehook[1]{第~}
+\renewcommand*{\cftpartaftersnum}{~卷\space}
+\renewcommand*{\cftpartaftersnumb}{\space\space\space}
 
 % dots in chapter of ToC
 \renewcommand*{\cftchapterdotsep}{\cftdotsep}
@@ -135,10 +148,6 @@
 \setlength{\parskip}{3pt}
 
 
-\title{失落之城}
-\author{白羽}
-\date{}
-
 % \includeonly{preface}
 % \includeonly{明月出天山}
 
@@ -163,8 +172,14 @@
 
 \mainmatter
 
+\part{凡间路}
 %%% TEMPLATE START %%%
-%<<T_FILES>>\include{T_FILE}<</T_FILES>>
+%<<T_FILES>>\include{src/vol1/*.tex}<</T_FILES>>
+%%% TEMPLATE END %%%
+
+\part{登仙途}
+%%% TEMPLATE START %%%
+%<<T_FILES>>\include{src/vol2/*.tex}<</T_FILES>>
 %%% TEMPLATE END %%%
 
 % \include{ch001}
